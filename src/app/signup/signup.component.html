@@ -1,0 +1,36 @@
+<div class="background-image">
+
+  <div class="container">
+    <div class="form-box">
+
+      <form class="form" #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
+
+        <h5 class="card-title sign-in-title">Sign Up</h5>
+
+        <div class="mb-3">
+          <label for="emailinput" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="emailinput" name="email" required ngModel email #email="ngModel" [ngClass]="{'is-invalid': !email.valid && email.touched}">
+        </div>
+
+        <div class="mb-3">
+          <label for="passwordinput" class="form-label">Password (min. length: 6)</label>
+          <input type="password" class="form-control" id="passwordinput" name="password" required ngModel #pwd="ngModel" [(ngModel)]="passwordVal" [ngClass]="{'is-invalid': (!pwd.valid || passwordVal.length < 6) && pwd.touched}" >
+        </div>
+
+        <div class="mb-3">
+          <label for="verifyinput" class="form-label">Verify Password</label>
+          <input type="password" class="form-control" id="verifyinput" name="verify" required ngModel #verify="ngModel" [(ngModel)]="verifyVal" [ngClass]="{'is-invalid': (!verify.valid || verifyVal.length < 6) && verify.touched}">
+        </div>
+
+        <div class="error-message" *ngIf="errorMessage !== ''" >{{errorMessage}}</div>
+
+        <div class="submit-s">
+          <button class="btn btn-primary sign-in-button" type="submit" [disabled]="!signInForm.valid || fetching" >Sign In</button>
+          <a class="nav-link flex-link" routerLink="/login" >Switch to Login</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

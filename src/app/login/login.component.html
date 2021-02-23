@@ -1,0 +1,31 @@
+<div class="background-image">
+
+  <div class="container">
+    <div class="form-box">
+
+      <form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+
+        <h5 class="card-title sign-in-title">Login</h5>
+
+        <div class="mb-3">
+          <label for="emailinput" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="emailinput" name="email" required ngModel email #email="ngModel" [ngClass]="{'is-invalid': !email.valid && email.touched}">
+        </div>
+
+        <div class="mb-3">
+          <label for="passwordinput" class="form-label">Password</label>
+          <input type="password" class="form-control" id="passwordinput" name="password" required ngModel #pwd="ngModel" [ngClass]="{'is-invalid': !pwd.valid && pwd.touched}" >
+        </div>
+
+        <div class="error-message" *ngIf="errorMessage !== ''" >{{errorMessage}}</div>
+
+        <div class="submit-s">
+          <button class="btn btn-primary sign-in-button" type="submit" [disabled]="!loginForm.valid || fetching" >Sign In</button>
+          <a class="nav-link flex-link" routerLink="/signin" >Switch to Sign In</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

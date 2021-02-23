@@ -1,0 +1,50 @@
+.test1 {
+  background-color: red;
+}
+
+.test2 {
+  background-color: blue;
+}
+
+.col-centered {
+  margin: auto
+}
+
+.form-box {
+  max-width: 600px;
+  padding: 30px;
+  border: solid #f3f3f5;
+  margin: auto;
+  margin-top: 10vh;
+  background-color: #fff;
+}
+
+.sign-in-title {
+  margin: 0 auto 25px auto;
+}
+
+.sign-in-button {
+  margin-top: 15px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.background-image {
+  height: calc(100vh - 56px);
+  display: flex;
+  background-image: url("../../assets/geometry2.png");
+  background-repeat: repeat;
+}
+
+.submit-s {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-link {
+  margin-top: 15px;
+}
