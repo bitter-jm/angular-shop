@@ -29,7 +29,7 @@ const routes: Routes = [
     component: SignupComponent
   },
   {
-    path: 'item/:id',
+    path: 'items/:id',
     component: ItemDetailComponent
   },
 ];

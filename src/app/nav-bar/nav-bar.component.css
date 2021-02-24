@@ -8,3 +8,11 @@
   margin-right: 30px;
   align-items: center;
 }
+
+.navbar {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+}

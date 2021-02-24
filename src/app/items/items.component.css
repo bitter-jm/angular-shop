@@ -1,0 +1,49 @@
+.t {
+  background-color: paleturquoise;
+}
+
+.t2 {
+  background-color: plum;
+}
+
+.image-card {
+  height: 90vw;
+  max-height: 300px;
+  width: 78vw;
+  max-width: 262px;
+  object-fit: cover;
+}
+
+.item {
+  margin: 35px;
+}
+
+.item:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.items {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-description {
+  padding: 10px;
+  padding-left: 15px;
+  background-color: #f9f9ff;
+}
+
+.card-title {
+  margin-bottom: 5px;
+}
+
+.picker {
+  background-color: #fdfdfd;
+  border-color: #ddd;
+  border-radius: 5px;
+  width: 130px;
+  margin-top: 30px;
+  margin-left: 10px;
+}

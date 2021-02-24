@@ -1,1 +1,21 @@
-<p>items works!</p>
+<div class="container">
+  <button (click)="log()">Log filter</button>
+  <label for="filter">Sort by:</label>
+  <select name="filter" id="filterpicker" class="picker" (change)="onFilterChange($event)" ngModel [(ngModel)]="filter" >
+    <option value="popular">Popular</option>
+    <option value="price-up">Price up</option>
+    <option value="price-down">Price down</option>
+  </select>
+
+  <div class="items ">
+    <div *ngFor="let item of items; index as i">
+      <div class="item card" [routerLink]="'/items/'+item.id" >
+        <img class="card-img-top image-card" [src]="item.image" [alt]="item.name">
+        <div class="item-description">
+          <h6 class="card-title">{{item.name}}</h6>
+          <p class="card-text">{{item.price}} €</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
