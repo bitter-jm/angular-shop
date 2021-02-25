@@ -1,27 +1,56 @@
-# Shop
+# Angular project: "Best Professional Store"
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+This project is just to consolidate the concepts learned through [Maximilian's Angular Course](https://www.udemy.com/course/the-complete-guide-to-angular-2/).
 
-## Development server
+----------------
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Navigation Routes:
 
-## Code scaffolding
+- /shop 
+- /items/:id 
+- /login (GUARDed: when user is authenticated, redirects to shop)
+- /signin (GUARDed: when user is authenticated, redirects to shop)
+- /cart 
+- /* -> redirect to /shop
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Managing App State
 
-## Build
+To practice, I've handled the app state in two different ways:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**NGRX**:
+- user -> manages auth state related to sessions
+- cart -> manages the cart state (accessed from navbar-cart-preview and cart)
+	
+**State managed from service:**
+- items -> manages items from /shop and /items/:id
 
-## Running unit tests
+## Persistence:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Current session and cart is stored in local cache and retrieved at each refresh from the browser. 
 
-## Running end-to-end tests
+All persistence is managed through services.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Playing with Observables:
 
-## Further help
+**Behaviour:**
+- Items.component subscribes to getItems from items.service and retrieves the items.
+- When any component calls changeFilter from items.service, the service will emit the modified items to the subscribers of getItems automatically.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Logic:**
+
+shop.component.ts subscribes to getItems() Observable from items.service to retrieve and display them.
+
+getItems(): Observable<Item[]> [from items.service] does:
+- First time: fetches items, stores them and emits the items to the subscribers.
+- listens for changes to this.filter property and emits items to subscribers applying the filter.
+
+changeFilter() from items.service does:
+- modifies this.filter and emits the change to subscribers of the filter Observable (getItems method, which then will emit the new filtered items).
+
+**Note:** This is not the best approach to this use case but it's a great way to practice with Observables.
+
+## Angular Forms and Validation:
+
+Angular forms are used in /login & /signin paths.
+
+This application validates the forms in front-end and also displays validation errors from back-end.
