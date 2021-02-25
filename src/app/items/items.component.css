@@ -1,5 +1,5 @@
 .t {
-  background-color: paleturquoise;
+  background-color: red;
 }
 
 .t2 {
@@ -46,4 +46,11 @@
   width: 130px;
   margin-top: 30px;
   margin-left: 10px;
+}
+
+.loading-comp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
 }

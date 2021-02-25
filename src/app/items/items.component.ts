@@ -14,23 +14,23 @@ export class ItemsComponent implements OnInit {
 
   items: Item[] = [];
   filter: string | undefined;
+  loading = true;
 
   constructor(private itemsService: ItemsService) { }
 
   ngOnInit(): void {
+    window.scroll(0,0);
     this.itemsService.getItems().subscribe((items) => {
       this.items = items;
+      this.loading = false;
+
     });
-    this.filter = this.itemsService.getFilter();
+    this.filter = this.itemsService.getActiveFilter();
   }
 
   onFilterChange(event: Event) {
     const target = <HTMLSelectElement> event.target;
     this.itemsService.changeFilter(target.value);
-  }
-
-  log() {
-    console.log(this.filter);
   }
 
 }

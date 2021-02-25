@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable, Subscriber } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Item } from './item.model';
+import * as fromApp from '../store/app.reducer';
+import * as CartActions from '../cart/store/cart.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,7 @@ export class ItemsService {
   private filterObs: Observable<string> | undefined;
   private emitChangefilter = (filter:string) => {};
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private store: Store<fromApp.AppState>) {
     this.filterObs =  new Observable<string>( (subscriber: Subscriber<string>) => {
       this.emitChangefilter = (filter:string) => {
         this.filter = filter;
@@ -23,11 +26,12 @@ export class ItemsService {
     });
   }
 
-  getFilter() {
+  getActiveFilter() {
     return this.filter;
   }
 
   changeFilter(filter: string = "popular") {
+    console.log(this.store.select("cart"));
     this.emitChangefilter(filter);
   }
 

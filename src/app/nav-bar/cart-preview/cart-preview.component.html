@@ -1,1 +1,48 @@
-<p>cart-preview works!</p>
+
+<div class="nav-cart-container" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" >
+
+  <div class="cart-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" fill="currentColor" class="bi bi-cart cart-icon" viewBox="0 0 16 16" routerLink="/cart" (click)="onMouseLeave()" >
+      <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </svg>
+  </div>
+
+  <div class="cart-number" *ngIf="cartItems.length > 0" >{{cartItems.length}}</div>
+
+  <div class="cart-preview" *ngIf="showCartPreview">
+
+    <div class="no-items" *ngIf="cartItems.length < 1" >
+      There are no items in your cart.
+    </div>
+
+    <div class="items" *ngIf="cartItems.length > 0" >
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let cartItem of cartItems; let i = index;">
+          <div class="item">
+            <img class="item-image pointer" [src]="cartItem.item.image" [alt]="cartItem.item.name" [routerLink]="'/items/'+cartItem.item.id" (click)="onMouseLeave()" >
+            <div class="item-detail">
+              <div class="pointer" [routerLink]="'/items/'+cartItem.item.id" (click)="onMouseLeave()" >
+                {{cartItem.item.name}}
+              </div>
+              <div>
+                <div class="inline">Size: {{cartItem.size}}</div>
+                <div class="inline m-left">x{{cartItem.quantity}}</div>
+                <div class="inline m-left">{{cartItem.item.price | number: '0.2-2'}} €</div>
+              </div>
+              <div class="item-remove pointer" (click)="onRemoveItem(i)" >
+                remove item
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item resume">
+          <button class="btn btn-dark" routerLink="/cart" (click)="onMouseLeave()" >Go to cart</button>
+          <div class="total-price">
+            <b>Total: {{getTotalPrice() | number: '0.2-2'}} €</b>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

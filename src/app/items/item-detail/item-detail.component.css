@@ -1,0 +1,67 @@
+.container {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  overflow: hidden;
+}
+
+.item-image {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.content-box {
+  padding: 0 15px 0 15px;
+}
+
+h5 {
+  margin-top: 30px;
+}
+
+p {
+  text-align: justify;
+}
+
+.add-to-cart {
+  margin-top: 30px;
+}
+
+.sizes {
+  margin-top: 40px;
+}
+
+.action-btns {
+  display: flex;
+  flex-direction: row;
+}
+
+.finish-order-btn {
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
+.arrow-back {
+  width: 25px;
+  padding-bottom: 5px;
+}
+
+.text-back {
+  margin-left: 10px;
+}
+
+.back-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+  max-width: 120px;
+}
+
+.back-container:hover .text-back {
+  /* border-bottom: 1px solid; */
+  font-weight: bold;
+}
+
+.back-container:focus {
+  outline: 0;
+}

@@ -1,5 +1,4 @@
 <div class="container">
-  <button (click)="log()">Log filter</button>
   <label for="filter">Sort by:</label>
   <select name="filter" id="filterpicker" class="picker" (change)="onFilterChange($event)" ngModel [(ngModel)]="filter" >
     <option value="popular">Popular</option>
@@ -7,13 +6,19 @@
     <option value="price-down">Price down</option>
   </select>
 
-  <div class="items ">
+  <div class="loading-comp t1" *ngIf="loading">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div class="items " *ngIf="!loading">
     <div *ngFor="let item of items; index as i">
       <div class="item card" [routerLink]="'/items/'+item.id" >
         <img class="card-img-top image-card" [src]="item.image" [alt]="item.name">
         <div class="item-description">
           <h6 class="card-title">{{item.name}}</h6>
-          <p class="card-text">{{item.price}} €</p>
+          <p class="card-text">{{item.price | number: '0.2-2'}} €</p>
         </div>
       </div>
     </div>
