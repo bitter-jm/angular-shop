@@ -23,8 +23,7 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(index: number) {
-    this.store.dispatch(new CartActions.DeleteItem(index))
-    this.cartService.saveCartToStorage();
+    this.cartService.removeItem(index);
   }
 
   getTotalPrice(): number {

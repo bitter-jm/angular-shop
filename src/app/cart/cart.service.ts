@@ -38,4 +38,9 @@ export class CartService {
     }
   }
 
+  removeItem(index: number) {
+    this.store.dispatch(new CartActions.DeleteItem(index))
+    this.saveCartToStorage();
+  }
+
 }

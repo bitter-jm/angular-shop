@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { CartItem } from 'src/app/cart/store/cart.actions';
 import * as fromApp from '../../store/app.reducer';
 import * as CartActions from '../../cart/store/cart.actions';
+import { CartService } from 'src/app/cart/cart.service';
 
 @Component({
   selector: 'app-cart-preview',
@@ -14,7 +15,7 @@ export class CartPreviewComponent implements OnInit {
   cartItems: CartItem[] = [];
   showCartPreview = false;
 
-  constructor(private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.store.select("cart").subscribe((cart) => {
@@ -39,7 +40,7 @@ export class CartPreviewComponent implements OnInit {
   }
 
   onRemoveItem(index: number) {
-    this.store.dispatch(new CartActions.DeleteItem(index));
+    this.cartService.removeItem(index);
   }
 
 }
