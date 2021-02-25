@@ -42,11 +42,11 @@ All persistence is managed through services.
 
 shop.component.ts subscribes to getItems() Observable from items.service to retrieve and display them.
 
-getItems(): Observable<Item[]> [from items.service] does:
+getItems(): Observable<Item[]> from items.service does:
 - First time: fetches items, stores them and emits the items to the subscribers.
 - listens for changes to this.filter property and emits items to subscribers applying the filter.
 
-changeFilter() from items.service does:
+changeFilter from items.service does:
 - modifies this.filter and emits the change to subscribers of the filter Observable (getItems method, which then will emit the new filtered items).
 
 **Note:** This is not the best approach to this use case but it's a great way to practice with Observables.
