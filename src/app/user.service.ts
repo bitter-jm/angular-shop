@@ -102,4 +102,10 @@ export class UserService {
 
   }
 
+  isLoggedIn() : boolean {
+    const user = localStorage.getItem("user");
+    if (user) return true;
+    else return false;
+  }
+
 }
