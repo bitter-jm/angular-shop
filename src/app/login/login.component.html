@@ -20,7 +20,7 @@
         <div class="error-message" *ngIf="errorMessage !== ''" >{{errorMessage}}</div>
 
         <div class="submit-s">
-          <button class="btn btn-primary sign-in-button" type="submit" [disabled]="!loginForm.valid || fetching" >Sign In</button>
+          <button class="btn btn-primary sign-in-button" type="submit" [disabled]="!loginForm.valid || fetching" >Login</button>
           <a class="nav-link flex-link" routerLink="/signin" >Switch to Sign In</a>
         </div>
       </form>
